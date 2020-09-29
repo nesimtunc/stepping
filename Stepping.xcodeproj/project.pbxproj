@@ -13,8 +13,11 @@
 		48461F20251AD1180053F4D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48461F1F251AD1180053F4D7 /* Preview Assets.xcassets */; };
 		48461F22251AD1180053F4D7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F21251AD1180053F4D7 /* Persistence.swift */; };
 		48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48461F23251AD1180053F4D7 /* Stepping.xcdatamodeld */; };
-		48461F30251AD1190053F4D7 /* SteppingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F2F251AD1190053F4D7 /* SteppingTests.swift */; };
 		48461F3B251AD1190053F4D7 /* SteppingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F3A251AD1190053F4D7 /* SteppingUITests.swift */; };
+		48B27CEB251C43E400ABC77D /* AddNewBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */; };
+		48C63D152522D21800912426 /* ValidationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D142522D21800912426 /* ValidationServiceTests.swift */; };
+		48C63D1A2522D24D00912426 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D192522D24D00912426 /* ValidationService.swift */; };
+		48C63D2F2522E16800912426 /* SteppingBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D2E2522E16800912426 /* SteppingBeacon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +47,14 @@
 		48461F24251AD1180053F4D7 /* Stepping.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stepping.xcdatamodel; sourceTree = "<group>"; };
 		48461F26251AD1180053F4D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48461F2B251AD1190053F4D7 /* SteppingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteppingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48461F2F251AD1190053F4D7 /* SteppingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingTests.swift; sourceTree = "<group>"; };
 		48461F31251AD1190053F4D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48461F36251AD1190053F4D7 /* SteppingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteppingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48461F3A251AD1190053F4D7 /* SteppingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingUITests.swift; sourceTree = "<group>"; };
 		48461F3C251AD1190053F4D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBeacon.swift; sourceTree = "<group>"; };
+		48C63D142522D21800912426 /* ValidationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationServiceTests.swift; sourceTree = "<group>"; };
+		48C63D192522D24D00912426 /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
+		48C63D2E2522E16800912426 /* SteppingBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingBeacon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 		48461F17251AD1140053F4D7 /* Stepping */ = {
 			isa = PBXGroup;
 			children = (
+				48C63D332522E1AD00912426 /* Services */,
+				48C63D202522E0D200912426 /* Model */,
 				48461F18251AD1140053F4D7 /* SteppingApp.swift */,
 				48461F1A251AD1140053F4D7 /* ContentView.swift */,
 				48461F1C251AD1180053F4D7 /* Assets.xcassets */,
@@ -106,6 +114,7 @@
 				48461F26251AD1180053F4D7 /* Info.plist */,
 				48461F23251AD1180053F4D7 /* Stepping.xcdatamodeld */,
 				48461F1E251AD1180053F4D7 /* Preview Content */,
+				48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */,
 			);
 			path = Stepping;
 			sourceTree = "<group>";
@@ -121,8 +130,8 @@
 		48461F2E251AD1190053F4D7 /* SteppingTests */ = {
 			isa = PBXGroup;
 			children = (
-				48461F2F251AD1190053F4D7 /* SteppingTests.swift */,
 				48461F31251AD1190053F4D7 /* Info.plist */,
+				48C63D142522D21800912426 /* ValidationServiceTests.swift */,
 			);
 			path = SteppingTests;
 			sourceTree = "<group>";
@@ -134,6 +143,22 @@
 				48461F3C251AD1190053F4D7 /* Info.plist */,
 			);
 			path = SteppingUITests;
+			sourceTree = "<group>";
+		};
+		48C63D202522E0D200912426 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48C63D2E2522E16800912426 /* SteppingBeacon.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		48C63D332522E1AD00912426 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				48C63D192522D24D00912426 /* ValidationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,8 +292,11 @@
 			files = (
 				48461F22251AD1180053F4D7 /* Persistence.swift in Sources */,
 				48461F1B251AD1140053F4D7 /* ContentView.swift in Sources */,
+				48C63D2F2522E16800912426 /* SteppingBeacon.swift in Sources */,
+				48C63D1A2522D24D00912426 /* ValidationService.swift in Sources */,
 				48461F19251AD1140053F4D7 /* SteppingApp.swift in Sources */,
 				48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */,
+				48B27CEB251C43E400ABC77D /* AddNewBeacon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48461F30251AD1190053F4D7 /* SteppingTests.swift in Sources */,
+				48C63D152522D21800912426 /* ValidationServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
