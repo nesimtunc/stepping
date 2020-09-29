@@ -12,8 +12,9 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Run tests
-      run: xcodebuild clean test -project "Stepping.xcodeproj" -scheme "Stepping" -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
-    - name: Build App
-      run: xcodebuild -project "Stepping.xcodeproj" -scheme "Stepping" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+    - uses: actions/checkout@latest
+    - uses: tgymnich/setup-swift@v1
+      with:
+        version: '5.1.3'
+    - run: swift build
+    - run: swift test
