@@ -14,26 +14,10 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>ValidationServiceTests.xcscheme</key>
+		<key>SteppingUITests.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>ValidationServiceTests.test_empty_Beacon_UUID_should_throw_invalidUUID_error.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
 			<key>orderHint</key>
 			<integer>3</integer>
-		</dict>
-		<key>ValidationServiceTests.test_empty_Beacon_name_should_throw_nameRequired_error.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -41,12 +25,17 @@
 		<key>48461F14251AD1140053F4D7</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>48461F2A251AD1190053F4D7</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
+		</dict>
+		<key>48461F35251AD1190053F4D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
