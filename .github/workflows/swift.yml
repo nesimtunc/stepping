@@ -18,6 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Unit Tests
-        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Stepping.xcodeproj" --scheme "SteppingTests" -destination "${{ matrix.destination }}" clean test | xcpretty
+        run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Stepping.xcodeproj" -scheme "SteppingTests" -destination "${{ matrix.destination }}" clean test | xcpretty
       - name: UI Tests
         run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Stepping.xcodeproj" -scheme "SteppingUITests" -destination "${{ matrix.destination }}" clean test | xcpretty
