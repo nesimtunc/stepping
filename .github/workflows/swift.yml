@@ -13,7 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
+    - name: Force Xcode 12
+      run: sudo xcode-select -switch /Applications/Xcode_12.0.1.app
     - name: Run tests
-      run: swift test -v
+      run: xcodebuild clean test -project "Stepping.xcodeproj" -scheme "Stepping" -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=latest"
+    - name: Build App
+      run: xcodebuild -project "Stepping.xcodeproj" -scheme "Stepping" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
