@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		483C818625241A3A000DEF8B /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C818525241A3A000DEF8B /* PersistenceTests.swift */; };
 		48461F19251AD1140053F4D7 /* SteppingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F18251AD1140053F4D7 /* SteppingApp.swift */; };
 		48461F1B251AD1140053F4D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F1A251AD1140053F4D7 /* ContentView.swift */; };
 		48461F1D251AD1180053F4D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48461F1C251AD1180053F4D7 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		483C818525241A3A000DEF8B /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		48461F15251AD1140053F4D7 /* Stepping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48461F18251AD1140053F4D7 /* SteppingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingApp.swift; sourceTree = "<group>"; };
 		48461F1A251AD1140053F4D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				48461F31251AD1190053F4D7 /* Info.plist */,
 				48C63D142522D21800912426 /* ValidationServiceTests.swift */,
+				483C818525241A3A000DEF8B /* PersistenceTests.swift */,
 			);
 			path = SteppingTests;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48C63D152522D21800912426 /* ValidationServiceTests.swift in Sources */,
+				483C818625241A3A000DEF8B /* PersistenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
