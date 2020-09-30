@@ -38,17 +38,18 @@ struct PersistenceController {
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
-		return dummyData(count: 3)
+		dummyData(count: 3)
     }()
 
 	static var fullOfDataPreview: PersistenceController = {
-		return dummyData(count: 11)
+		dummyData(count: 11)
 	}()
 
     let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Stepping")
+		container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
