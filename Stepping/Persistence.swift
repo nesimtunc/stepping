@@ -21,6 +21,8 @@ fileprivate func dummyData(count:Int) -> PersistenceController {
 		newItem.minor = Int16(1 * i)
 		newItem.title = "Did you forget from?"
 		newItem.message = "Vallet something?"
+		newItem.notifyOnExit = true
+		newItem.notifyOnEnter = false
 		newItem.timestamp = Date()
 	}
 	do {

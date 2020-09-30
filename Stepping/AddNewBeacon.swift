@@ -19,6 +19,9 @@ struct AddNewBeacon: View {
     @State private var minor = ""
     @State private var title = ""
     @State private var message = ""
+    @State private var notifyOnEnter = false
+    @State private var notifyOnExit = true
+
 
 
     @State private var errorMessage = ""
@@ -36,6 +39,12 @@ struct AddNewBeacon: View {
                 Section(header: Text("Notification"), content: {
                     TextField("Title", text: $title)
                     TextField("Message", text: $message)
+                    Toggle(isOn: $notifyOnEnter) {
+                        Text("Notify On Enter")
+                    }
+                    Toggle(isOn: $notifyOnExit) {
+                        Text("Notify On Exit")
+                    }
                 })
                 Section {
                     Button("Save") {
