@@ -91,7 +91,7 @@ struct AddNewBeacon: View {
             let newItem = BeaconItem(context: viewContext)
             newItem.id = beacon.uuid
             newItem.name = beacon.name
-            newItem.major = beacon.minor
+			newItem.major = beacon.major
             newItem.minor = beacon.minor
             newItem.title = title == "" ? "Did you forget something from \(beacon.name)" : beacon.title
             newItem.message = beacon.message
