@@ -7,7 +7,7 @@
 
 import CoreData
 
-fileprivate func dummyData(count:Int) -> PersistenceController {
+fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
 	let result = PersistenceController(inMemory: true)
 	if count == 0 {
 		return result
@@ -38,11 +38,11 @@ struct PersistenceController {
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
-		dummyData(count: 3)
+		createSomeDummyData(count: 3)
     }()
 
 	static var fullOfDataPreview: PersistenceController = {
-		dummyData(count: 11)
+		createSomeDummyData(count: 11)
 	}()
 
     let container: NSPersistentCloudKitContainer
