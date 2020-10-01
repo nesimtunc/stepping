@@ -22,10 +22,10 @@ struct AddNewBeacon: View {
     @State private var notifyOnEnter = false
     @State private var notifyOnExit = true
 
-
-
     @State private var errorMessage = ""
     @State private var showingAlert = false
+
+	var sessionController: SessionController!
 
     var body: some View {
         NavigationView {
@@ -49,7 +49,8 @@ struct AddNewBeacon: View {
                 Section {
                     Button("Save") {
                         addItem()
-                    }.disabled(name.isEmpty || id.isEmpty || major.isEmpty || minor.isEmpty || message.isEmpty)
+						sessionController.updateMonitoring()
+                    }.disabled(shouldDisableSaveButton)
                 }
             }
                     .navigationTitle("Add New iBeacon")
@@ -64,6 +65,10 @@ struct AddNewBeacon: View {
         }
     }
 
+	var shouldDisableSaveButton : Bool {
+		name.isEmpty || id.isEmpty || major.isEmpty || minor.isEmpty || message.isEmpty
+	}
+
     private func addItem() {
         errorMessage = ""
         showingAlert = false
@@ -71,7 +76,7 @@ struct AddNewBeacon: View {
         let validationService = ValidationService()
         var result: SteppingBeacon!
         do {
-            result = try validationService.validateBeaconItem(id: id, name: name, major: major, minor: minor, title: title, message: message, notifyOnExit: false, notifyOnEnter: true)
+            result = try validationService.validateBeaconItem(id: id, name: name, major: major, minor: minor, title: title, message: message, notifyOnExit: notifyOnExit, notifyOnEnter: notifyOnEnter)
         } catch {
             let nsError = error as NSError
             errorMessage = nsError.localizedDescription
@@ -94,7 +99,7 @@ struct AddNewBeacon: View {
 
             do {
                 try viewContext.save()
-                self.presentationMode.wrappedValue.dismiss()
+				self.presentationMode.wrappedValue.dismiss()
             } catch {
                 let nsError = error as NSError
                 errorMessage = nsError.localizedDescription
