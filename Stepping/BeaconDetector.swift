@@ -50,9 +50,9 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 	func startMonitoring() {
 		stopScanningAll()
 		for item in getBeacons() {
-			guard let beaconID = item.id, beaconItems[beaconID] == nil else { return }
+			guard let beaconID = item.uuid, beaconItems[beaconID] == nil else { return }
 
-			let constraint = CLBeaconIdentityConstraint(uuid: item.id!,
+			let constraint = CLBeaconIdentityConstraint(uuid: item.uuid!,
 														major: CLBeaconMajorValue(item.major),
 														minor:  CLBeaconMinorValue(item.minor))
 			locationManager.startRangingBeacons(satisfying: constraint)
@@ -61,25 +61,25 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 			let beaconRegion = CLBeaconRegion(beaconIdentityConstraint: constraint, identifier: item.name!)
 			locationManager.startMonitoring(for: beaconRegion)
 
-			beaconItems[item.id!] = item
+			beaconItems[item.uuid!] = item
 		}
 	}
 
 	func stopScanning(beaconItem: BeaconItem) {
-		let beaconRegion = CLBeaconRegion(uuid: beaconItem.id!, identifier: String(beaconItem.name!))
+		let beaconRegion = CLBeaconRegion(uuid: beaconItem.uuid!, identifier: String(beaconItem.name!))
 		locationManager.stopMonitoring(for: beaconRegion)
 
-		let constraint = CLBeaconIdentityConstraint(uuid: beaconItem.id!,
+		let constraint = CLBeaconIdentityConstraint(uuid: beaconItem.uuid!,
 													major: CLBeaconMajorValue(beaconItem.major),
 													minor:  CLBeaconMinorValue(beaconItem.minor))
 
 		locationManager.stopRangingBeacons(satisfying: constraint)
-		beaconItems.removeValue(forKey: beaconItem.id!)
+		beaconItems.removeValue(forKey: beaconItem.uuid!)
 	}
 
 	func stopScanningAll() {
 		for item in getBeacons() {
-			let constraint = CLBeaconIdentityConstraint(uuid: item.id!,
+			let constraint = CLBeaconIdentityConstraint(uuid: item.uuid!,
 														major: CLBeaconMajorValue(item.major),
 														minor:  CLBeaconMinorValue(item.minor))
 			locationManager.stopRangingBeacons(satisfying: constraint)

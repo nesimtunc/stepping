@@ -89,7 +89,7 @@ struct AddNewBeacon: View {
 		
 		withAnimation {
 			let newItem = BeaconItem(context: viewContext)
-			newItem.id = beacon.uuid
+			newItem.uuid = beacon.uuid
 			newItem.name = beacon.name
 			newItem.major = beacon.major
 			newItem.minor = beacon.minor

@@ -27,7 +27,7 @@ class PersistenceTests: XCTestCase {
 	
 	private func createDummyItem() {
 		let newItem = BeaconItem(context: self.context)
-		newItem.id = UUID(uuidString: validUUIDStr)
+		newItem.uuid = UUID(uuidString: validUUIDStr)
 		newItem.name = "Test Beacon"
 		newItem.major = 3
 		newItem.minor = 1

@@ -15,7 +15,7 @@ fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
 	let viewContext = result.container.viewContext
 	for i in 1..<count {
 		let newItem = BeaconItem(context: viewContext)
-		newItem.id = UUID(uuidString: "77048D46-2AB4-44B2-9C72-2764B8A899C5")
+		newItem.uuid = UUID(uuidString: "77048D46-2AB4-44B2-9C72-2764B8A899C5")
 		newItem.name = "Beacon \(i)"
 		newItem.major = Int16(10 * i)
 		newItem.minor = Int16(1 * i)
@@ -24,6 +24,7 @@ fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
 		newItem.notifyOnExit = true
 		newItem.notifyOnEnter = false
 		newItem.timestamp = Date()
+		newItem.lastProximity = Int16.random(in: 0...3)
 	}
 	do {
 		try viewContext.save()
