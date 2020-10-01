@@ -35,28 +35,28 @@ fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
 }
 
 struct PersistenceController {
-    static let shared = PersistenceController()
-
-    static var preview: PersistenceController = {
+	static let shared = PersistenceController()
+	
+	static var preview: PersistenceController = {
 		createSomeDummyData(count: 3)
-    }()
-
+	}()
+	
 	static var fullOfDataPreview: PersistenceController = {
 		createSomeDummyData(count: 11)
 	}()
-
-    let container: NSPersistentCloudKitContainer
-
-    init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Stepping")
+	
+	let container: NSPersistentCloudKitContainer
+	
+	init(inMemory: Bool = false) {
+		container = NSPersistentCloudKitContainer(name: "Stepping")
 		container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        }
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-    }
+		if inMemory {
+			container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+		}
+		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+			if let error = error as NSError? {
+				fatalError("Unresolved error \(error), \(error.userInfo)")
+			}
+		})
+	}
 }

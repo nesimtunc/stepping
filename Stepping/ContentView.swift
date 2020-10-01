@@ -10,21 +10,21 @@ import CoreData
 
 struct ContentView: View {
 	@Environment(\.managedObjectContext) private var viewContext
-
+	
 	@State private var showingAddScreen = false
-
-  	@State private var showingAlert = false
+	
+	@State private var showingAlert = false
 	@State private var errorMessage = ""
-
+	
 	private let session = SessionController()
-
+	
 	@FetchRequest(
 		sortDescriptors: [NSSortDescriptor(keyPath: \BeaconItem.timestamp, ascending: false)],
 		animation: .default)
-
+	
 	private var items: FetchedResults<BeaconItem>
 	private var maxBeaconCount = 10
-
+	
 	var body: some View {
 		NavigationView {
 			VStack {
@@ -58,17 +58,17 @@ struct ContentView: View {
 			}
 		}
 	}
-
+	
 	private func deleteItems(offsets: IndexSet) {
 		errorMessage = ""
 		showingAlert = false
-
+		
 		withAnimation {
 			offsets.map { items[$0] }.forEach { (item) in
 				session.stopMonitoring(beaconItem: item)
 				viewContext.delete(item)
 			}
-
+			
 			do {
 				try viewContext.save()
 			} catch {
@@ -87,7 +87,7 @@ struct BeaconItemCell: View {
 			HStack {
 				Label("", systemImage: "\(index + 1).circle")
 					.font(.title)
-
+				
 				VStack {
 					Text("\(item.name ?? "")")
 						.font(.headline)
@@ -99,7 +99,7 @@ struct BeaconItemCell: View {
 						.foregroundColor(.secondary)
 						.lineLimit(0)
 						.frame(maxWidth: .infinity, alignment: .leading)
-
+					
 					HStack {
 						Text("Major:")
 							.font(.headline)
@@ -131,7 +131,7 @@ struct EmptyBeaconView: View {
 struct RemaingBeaconCount: View {
 	var count = 0
 	var maxBeaconCount = 0
-
+	
 	var body: some View {
 		if count == 10 {
 			Text("You have reached maximum monitoring count.")
@@ -140,7 +140,7 @@ struct RemaingBeaconCount: View {
 		else {	Text("You can add \(maxBeaconCount - count) more iBeacon(s) to monitor.")
 			.foregroundColor(.secondary)
 		}
-
+		
 	}
 }
 
