@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		483BAEBA2525756700F3B734 /* BeaconDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BAEB92525756700F3B734 /* BeaconDetector.swift */; };
 		483C818625241A3A000DEF8B /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C818525241A3A000DEF8B /* PersistenceTests.swift */; };
 		48461F19251AD1140053F4D7 /* SteppingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F18251AD1140053F4D7 /* SteppingApp.swift */; };
 		48461F1B251AD1140053F4D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F1A251AD1140053F4D7 /* ContentView.swift */; };
@@ -19,6 +20,8 @@
 		48C63D152522D21800912426 /* ValidationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D142522D21800912426 /* ValidationServiceTests.swift */; };
 		48C63D1A2522D24D00912426 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D192522D24D00912426 /* ValidationService.swift */; };
 		48C63D2F2522E16800912426 /* SteppingBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D2E2522E16800912426 /* SteppingBeacon.swift */; };
+		48DFA2632525804C00A42639 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA2622525804C00A42639 /* NotificationService.swift */; };
+		48DFA26925258AD000A42639 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA26825258AD000A42639 /* SessionController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		483BAEB92525756700F3B734 /* BeaconDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconDetector.swift; sourceTree = "<group>"; };
 		483C818525241A3A000DEF8B /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		48461F15251AD1140053F4D7 /* Stepping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48461F18251AD1140053F4D7 /* SteppingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingApp.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 		48C63D142522D21800912426 /* ValidationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationServiceTests.swift; sourceTree = "<group>"; };
 		48C63D192522D24D00912426 /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		48C63D2E2522E16800912426 /* SteppingBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingBeacon.swift; sourceTree = "<group>"; };
+		48DFA2622525804C00A42639 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		48DFA26825258AD000A42639 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,9 @@
 				48461F23251AD1180053F4D7 /* Stepping.xcdatamodeld */,
 				48461F1E251AD1180053F4D7 /* Preview Content */,
 				48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */,
+				483BAEB92525756700F3B734 /* BeaconDetector.swift */,
+				48DFA2622525804C00A42639 /* NotificationService.swift */,
+				48DFA26825258AD000A42639 /* SessionController.swift */,
 			);
 			path = Stepping;
 			sourceTree = "<group>";
@@ -294,8 +303,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				48461F22251AD1180053F4D7 /* Persistence.swift in Sources */,
+				483BAEBA2525756700F3B734 /* BeaconDetector.swift in Sources */,
 				48461F1B251AD1140053F4D7 /* ContentView.swift in Sources */,
 				48C63D2F2522E16800912426 /* SteppingBeacon.swift in Sources */,
+				48DFA26925258AD000A42639 /* SessionController.swift in Sources */,
+				48DFA2632525804C00A42639 /* NotificationService.swift in Sources */,
 				48C63D1A2522D24D00912426 /* ValidationService.swift in Sources */,
 				48461F19251AD1140053F4D7 /* SteppingApp.swift in Sources */,
 				48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */,
