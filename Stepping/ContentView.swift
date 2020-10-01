@@ -35,7 +35,6 @@ struct ContentView: View {
 					}
 				}
 			}
-			.padding([.horizontal], -20)
 			.navigationBarTitle("My iBeacons")
 			.navigationBarItems(trailing: Button(action: {
 				self.showingAddScreen.toggle()
@@ -47,20 +46,29 @@ struct ContentView: View {
 			}
 			.font(.title2))
 			.sheet(isPresented: $showingAddScreen, content: {
-				AddNewBeacon().environment(\.managedObjectContext, self.viewContext)
+				AddNewBeacon(sessionController: session).environment(\.managedObjectContext, self.viewContext)
 			})
+			.alert(isPresented: $showingAlert) {
+				Alert(title: Text("Error on deleting item"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+			}
 		}
 	}
 
 	private func deleteItems(offsets: IndexSet) {
+		errorMessage = ""
+		showingAlert = false
+
 		withAnimation {
-			offsets.map { items[$0] }.forEach(viewContext.delete)
+			offsets.map { items[$0] }.forEach { (item) in
+				session.stopMonitoring(beaconItem: item)
+				viewContext.delete(item)
+			}
 
 			do {
 				try viewContext.save()
 			} catch {
-				let nsError = error as NSError
-				fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+				errorMessage = error.localizedDescription
+				showingAlert = true
 			}
 		}
 	}
