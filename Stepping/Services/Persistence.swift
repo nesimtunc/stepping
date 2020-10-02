@@ -24,7 +24,6 @@ fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
 		newItem.notifyOnExit = true
 		newItem.notifyOnEnter = false
 		newItem.timestamp = Date()
-		newItem.lastProximity = Int16.random(in: 0...3)
 	}
 	do {
 		try viewContext.save()

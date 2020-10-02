@@ -79,7 +79,10 @@ struct DetailView: View {
 }
 
 struct CustomProgressView {
+
 	
+
+
 }
 
 struct DarkBlueShadowProgressViewStyle: ProgressViewStyle {
