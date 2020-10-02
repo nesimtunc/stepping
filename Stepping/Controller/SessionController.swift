@@ -7,21 +7,22 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class SessionController: ObservableObject {
 	
-	private let beaconDetector = BeaconDetector()
+	let beaconDetector = BeaconDetector()
 	private let notificationService = NotificationService()
 	
 	private var beaconExitEventCanceller: AnyCancellable? = nil
 	private var beaconEnterEventCanceller: AnyCancellable? = nil
-	
+
 	init() {
 		self.beaconExitEventCanceller = self.beaconDetector.exists.sink { beaconItem in
-			self.notificationService.show(pushNotificationId: beaconItem.id!.uuidString, title: beaconItem.title!, message: beaconItem.message!)
+			self.notificationService.show(pushNotificationId: beaconItem.uuid!.uuidString, title: beaconItem.title!, message: beaconItem.message!)
 		}
 		self.beaconEnterEventCanceller = self.beaconDetector.enters.sink { beaconItem in
-			self.notificationService.show(pushNotificationId: beaconItem.id!.uuidString, title: beaconItem.title!, message: beaconItem.message!)
+			self.notificationService.show(pushNotificationId: beaconItem.uuid!.uuidString, title: beaconItem.title!, message: beaconItem.message!)
 		}
 	}
 	
@@ -32,5 +33,4 @@ class SessionController: ObservableObject {
 	func stopMonitoring(beaconItem: BeaconItem) {
 		beaconDetector.stopScanning(beaconItem: beaconItem)
 	}
-	
 }

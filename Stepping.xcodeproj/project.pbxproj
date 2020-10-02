@@ -16,12 +16,14 @@
 		48461F22251AD1180053F4D7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F21251AD1180053F4D7 /* Persistence.swift */; };
 		48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48461F23251AD1180053F4D7 /* Stepping.xcdatamodeld */; };
 		48461F3B251AD1190053F4D7 /* SteppingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F3A251AD1190053F4D7 /* SteppingUITests.swift */; };
+		4889C9092526A28D00346A22 /* BeaconItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889C9082526A28D00346A22 /* BeaconItemDetail.swift */; };
 		48B27CEB251C43E400ABC77D /* AddNewBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */; };
 		48C63D152522D21800912426 /* ValidationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D142522D21800912426 /* ValidationServiceTests.swift */; };
 		48C63D1A2522D24D00912426 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D192522D24D00912426 /* ValidationService.swift */; };
 		48C63D2F2522E16800912426 /* SteppingBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D2E2522E16800912426 /* SteppingBeacon.swift */; };
 		48DFA2632525804C00A42639 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA2622525804C00A42639 /* NotificationService.swift */; };
 		48DFA26925258AD000A42639 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA26825258AD000A42639 /* SessionController.swift */; };
+		48DFA26E2525F21F00A42639 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA26D2525F21F00A42639 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,12 +59,14 @@
 		48461F36251AD1190053F4D7 /* SteppingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteppingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48461F3A251AD1190053F4D7 /* SteppingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingUITests.swift; sourceTree = "<group>"; };
 		48461F3C251AD1190053F4D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4889C9082526A28D00346A22 /* BeaconItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconItemDetail.swift; sourceTree = "<group>"; };
 		48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBeacon.swift; sourceTree = "<group>"; };
 		48C63D142522D21800912426 /* ValidationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationServiceTests.swift; sourceTree = "<group>"; };
 		48C63D192522D24D00912426 /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		48C63D2E2522E16800912426 /* SteppingBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingBeacon.swift; sourceTree = "<group>"; };
 		48DFA2622525804C00A42639 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		48DFA26825258AD000A42639 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
+		48DFA26D2525F21F00A42639 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4840E9D525269DD600B7ECB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48461F1A251AD1140053F4D7 /* ContentView.swift */,
+				48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */,
+				4889C9082526A28D00346A22 /* BeaconItemDetail.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4840E9D925269E1300B7ECB3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				48DFA26825258AD000A42639 /* SessionController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		48461F0C251AD1140053F4D7 = {
 			isa = PBXGroup;
 			children = (
@@ -113,19 +135,14 @@
 		48461F17251AD1140053F4D7 /* Stepping */ = {
 			isa = PBXGroup;
 			children = (
+				4840E9D925269E1300B7ECB3 /* Controller */,
+				4840E9D525269DD600B7ECB3 /* Views */,
 				48C63D332522E1AD00912426 /* Services */,
 				48C63D202522E0D200912426 /* Model */,
 				48461F18251AD1140053F4D7 /* SteppingApp.swift */,
-				48461F1A251AD1140053F4D7 /* ContentView.swift */,
 				48461F1C251AD1180053F4D7 /* Assets.xcassets */,
-				48461F21251AD1180053F4D7 /* Persistence.swift */,
 				48461F26251AD1180053F4D7 /* Info.plist */,
-				48461F23251AD1180053F4D7 /* Stepping.xcdatamodeld */,
 				48461F1E251AD1180053F4D7 /* Preview Content */,
-				48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */,
-				483BAEB92525756700F3B734 /* BeaconDetector.swift */,
-				48DFA2622525804C00A42639 /* NotificationService.swift */,
-				48DFA26825258AD000A42639 /* SessionController.swift */,
 			);
 			path = Stepping;
 			sourceTree = "<group>";
@@ -160,6 +177,7 @@
 		48C63D202522E0D200912426 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				48461F23251AD1180053F4D7 /* Stepping.xcdatamodeld */,
 				48C63D2E2522E16800912426 /* SteppingBeacon.swift */,
 			);
 			path = Model;
@@ -168,7 +186,11 @@
 		48C63D332522E1AD00912426 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				48461F21251AD1180053F4D7 /* Persistence.swift */,
+				483BAEB92525756700F3B734 /* BeaconDetector.swift */,
+				48DFA2622525804C00A42639 /* NotificationService.swift */,
 				48C63D192522D24D00912426 /* ValidationService.swift */,
+				48DFA26D2525F21F00A42639 /* CoreDataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -309,9 +331,11 @@
 				48DFA26925258AD000A42639 /* SessionController.swift in Sources */,
 				48DFA2632525804C00A42639 /* NotificationService.swift in Sources */,
 				48C63D1A2522D24D00912426 /* ValidationService.swift in Sources */,
+				4889C9092526A28D00346A22 /* BeaconItemDetail.swift in Sources */,
 				48461F19251AD1140053F4D7 /* SteppingApp.swift in Sources */,
 				48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */,
 				48B27CEB251C43E400ABC77D /* AddNewBeacon.swift in Sources */,
+				48DFA26E2525F21F00A42639 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

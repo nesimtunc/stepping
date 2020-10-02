@@ -34,7 +34,7 @@ struct ContentView: View {
 					RemaingBeaconCount(count: items.count, maxBeaconCount: maxBeaconCount)
 					List {
 						ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-							BeaconItemCell(index:index, item:item)
+							BeaconItemCell(index:index, item:item, session: session)
 						}
 						.onDelete(perform: deleteItems)
 					}
@@ -80,37 +80,41 @@ struct ContentView: View {
 }
 
 struct BeaconItemCell: View {
-	var index: Int
-	var item: BeaconItem
-	var body: some View {
-		NavigationLink(destination: Text(item.name ?? "")) {
-			HStack {
-				Label("", systemImage: "\(index + 1).circle")
-					.font(.title)
-				
-				VStack {
-					Text("\(item.name ?? "")")
-						.font(.headline)
-						.multilineTextAlignment(.leading)
-						.lineLimit(0)
-						.frame(maxWidth: .infinity, alignment: .leading)
-					Text("\(item.id?.uuidString ?? "")")
-						.font(.subheadline)
-						.foregroundColor(.secondary)
-						.lineLimit(0)
-						.frame(maxWidth: .infinity, alignment: .leading)
-					
-					HStack {
-						Text("Major:")
+	let index: Int
+	let item: BeaconItem
+	let session: SessionController
+
+		var body: some View {
+			NavigationLink(destination: BeaconItemDetail(item: item, beaconDetector: session.beaconDetector)) {
+			VStack {
+				HStack {
+					Label("", systemImage: "\(index + 1).circle")
+						.font(.title)
+
+					VStack {
+						Text("\(item.name ?? "")")
 							.font(.headline)
-						Text("\(item.major)")
+							.multilineTextAlignment(.leading)
+							.lineLimit(0)
+							.frame(maxWidth: .infinity, alignment: .leading)
+						Text("\(item.uuid?.uuidString ?? "")")
 							.font(.subheadline)
-						Text("Minor:")
-							.font(.headline)
-						Text("\(item.minor)")
-							.font(.subheadline)
+							.foregroundColor(.secondary)
+							.lineLimit(0)
+							.frame(maxWidth: .infinity, alignment: .leading)
+
+						HStack {
+							Text("Major:")
+								.font(.headline)
+							Text("\(item.major)")
+								.font(.subheadline)
+							Text("Minor:")
+								.font(.headline)
+							Text("\(item.minor)")
+								.font(.subheadline)
+						}
+						.frame(maxWidth: .infinity, alignment: .leading)
 					}
-					.frame(maxWidth: .infinity, alignment: .leading)
 				}
 			}
 		}

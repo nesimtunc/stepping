@@ -12,7 +12,7 @@ import CoreData
 
 class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 
-	var dbContext: NSManagedObjectContext!
+	let coreDataManager: CoreDataManager!
 
 	private let locationManager = CLLocationManager()
 
@@ -20,10 +20,11 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 	private (set) var exists = PassthroughSubject<BeaconItem, Never>()
 	private (set) var enters = PassthroughSubject<BeaconItem, Never>()
 
-	@Published private(set) var beaconItems: [UUID: BeaconItem] = [:]
+	@Published var beaconItems: [UUID: BeaconItem] = [:]
+	@Published var foundBeacons: [UUID: CLBeacon] = [:]
 
 	override init() {
-		self.dbContext = PersistenceController.shared.container.viewContext
+		self.coreDataManager = CoreDataManager()
 		super.init()
 		locationManager.delegate = self
 		locationManager.requestAlwaysAuthorization()
@@ -49,7 +50,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 	func startMonitoring() {
 		stopScanningAll()
-		for item in getBeacons() {
+		for item in coreDataManager.getBeacons() {
 			guard let beaconID = item.uuid, beaconItems[beaconID] == nil else { return }
 
 			let constraint = CLBeaconIdentityConstraint(uuid: item.uuid!,
@@ -78,7 +79,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 	}
 
 	func stopScanningAll() {
-		for item in getBeacons() {
+		for item in coreDataManager.getBeacons() {
 			let constraint = CLBeaconIdentityConstraint(uuid: item.uuid!,
 														major: CLBeaconMajorValue(item.major),
 														minor:  CLBeaconMinorValue(item.minor))
@@ -91,10 +92,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 		self.beaconItems = [:]
 	}
 
-	func getBeacons() -> [BeaconItem] {
-		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "BeaconItem")
-		return try! self.dbContext.fetch(request) as! [BeaconItem]
-	}
+
 
 	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
 		guard let beaconRegion = region as? CLBeaconRegion else {
@@ -129,6 +127,11 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 		print("monitored region count:\(locationManager.monitoredRegions.count)")
 		print("montired beacon count= \(beaconItems.count)")
 		print("found beacon count= \(beacons.count)")
+		print("beacon: \(String(describing: beacons.first?.uuid))")
 		#endif
+
+		for item in beacons {
+			self.foundBeacons[item.uuid] =  item
+		}
 	}
 }
