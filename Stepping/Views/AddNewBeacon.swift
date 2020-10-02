@@ -96,6 +96,8 @@ struct AddNewBeacon: View {
 			newItem.title = title == "" ? "Did you forget something from \(beacon.name)" : beacon.title
 			newItem.message = beacon.message
 			newItem.timestamp = Date()
+			newItem.notifyOnExit = beacon.notifyOnExit
+			newItem.notifyOnEnter = beacon.notifyOnEnter
 			
 			do {
 				try viewContext.save()

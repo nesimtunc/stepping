@@ -90,9 +90,8 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 		}
 
 		self.beaconItems = [:]
+		self.foundBeacons = [:]
 	}
-
-
 
 	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
 		guard let beaconRegion = region as? CLBeaconRegion else {
