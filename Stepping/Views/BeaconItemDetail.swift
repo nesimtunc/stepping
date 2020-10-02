@@ -14,7 +14,7 @@ struct BeaconItemDetail: View {
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 16.0) {
-			DetailView(item: item, beacon: beaconDetector.foundBeacons[item.uuid!]!)
+			DetailView(item: item, beacon: beaconDetector.foundBeacons[item.uuid!])
 			Spacer()
 		}
 		.padding(.all)
@@ -23,7 +23,7 @@ struct BeaconItemDetail: View {
 
 struct DetailView: View {
 	var item: BeaconItem
-	var beacon: CLBeacon
+	var beacon: CLBeacon!
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 16.0) {
@@ -37,17 +37,28 @@ struct DetailView: View {
 			Text("Notification:")
 			Text(item.title!)
 			Text(item.message!)
-			
-			Text("Rssi: \(beacon.rssi)")
-			Text("Promixty:")
-			Text("\(getPromixityText(beacon.proximity))")
-				.font(Font.system(size: 40, weight: .medium, design: .rounded))
 
-			ProgressView(value: getProgressViewValue(beacon.proximity))
-				.accentColor(getProgressViewColor(beacon.proximity))
+			if beacon != nil {
+				BeaconView(beacon: beacon)
+			}
 		}
 	}
-	
+}
+
+struct BeaconView: View {
+
+	var beacon: CLBeacon
+
+	var body: some View {
+		Text("Rssi: \(beacon.rssi)")
+		Text("Promixty:")
+		Text("\(getPromixityText(beacon.proximity))")
+			.font(Font.system(size: 40, weight: .medium, design: .rounded))
+
+		ProgressView(value: getProgressViewValue(beacon.proximity))
+			.accentColor(getProgressViewColor(beacon.proximity))
+	}
+
 	private func getPromixityText(_ proximity: CLProximity) -> String {
 		switch proximity {
 			case .far:
@@ -62,7 +73,7 @@ struct DetailView: View {
 				return "UNKNOWN"
 		}
 	}
-	
+
 	private func getProgressViewValue(_ proximity: CLProximity) -> Double {
 		switch proximity {
 			case .far:
