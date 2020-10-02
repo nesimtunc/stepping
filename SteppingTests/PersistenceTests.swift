@@ -40,7 +40,7 @@ class PersistenceTests: XCTestCase {
 	
 	private func getItemById(id: String) -> NSManagedObject {
 		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "BeaconItem")
-		request.predicate = NSPredicate(format: "id == %@", validUUIDStr)
+		request.predicate = NSPredicate(format: "uuid == %@", validUUIDStr)
 		
 		let result = try! self.context.fetch(request)
 		return (result.first as? NSManagedObject)!
@@ -69,7 +69,7 @@ class PersistenceTests: XCTestCase {
 	func test_delete_existing_item() throws {
 		createDummyItem()
 		let request = NSFetchRequest<NSFetchRequestResult>(entityName: "BeaconItem")
-		request.predicate = NSPredicate(format: "id == %@", validUUIDStr)
+		request.predicate = NSPredicate(format: "uuid == %@", validUUIDStr)
 		
 		let result = try! self.context.fetch(request)
 		let item = result.first as? NSManagedObject
