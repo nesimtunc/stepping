@@ -42,8 +42,9 @@ struct DetailView: View {
 			Text("Promixty:")
 			Text("\(getPromixityText(beacon.proximity))")
 				.font(Font.system(size: 40, weight: .medium, design: .rounded))
+
 			ProgressView(value: getProgressViewValue(beacon.proximity))
-				.progressViewStyle(DarkBlueShadowProgressViewStyle())
+				.accentColor(getProgressViewColor(beacon.proximity))
 		}
 	}
 	
@@ -76,19 +77,19 @@ struct DetailView: View {
 				return 0.0
 		}
 	}
-}
 
-struct CustomProgressView {
-
-	
-
-
-}
-
-struct DarkBlueShadowProgressViewStyle: ProgressViewStyle {
-	func makeBody(configuration: Configuration) -> some View {
-		ProgressView(configuration)
-			.shadow(color: Color(red: 0, green: 0, blue: 0.6), radius: 4.0, x: 1.0, y: 2.0)
+	private func getProgressViewColor(_ proximity: CLProximity) -> Color {
+		switch proximity {
+			case .far:
+				return .yellow
+			case .near:
+				return .orange
+			case .immediate:
+				return .green
+			case .unknown:
+				return .gray
+			@unknown default:
+				return .gray
+		}
 	}
 }
-

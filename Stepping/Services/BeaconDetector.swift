@@ -131,7 +131,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 		#endif
 
 		for item in beacons {
-			self.foundBeacons[item.uuid] =  item
+			self.foundBeacons[item.uuid] = item
 		}
 	}
 }
