@@ -30,7 +30,8 @@ class SteppingUITests: XCTestCase {
 
 		app.navigationBars["My iBeacons"].buttons["plus"].tap()
 
-		let tablesQuery = app.tables
+		let tablesQuery2 = app.tables
+		let tablesQuery = tablesQuery2
 
 		let name = tablesQuery/*@START_MENU_TOKEN@*/.textFields["name"]/*[[".cells[\"Name ex: My Room\"]",".textFields[\"Name ex: My Room\"]",".textFields[\"name\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
 		name.tap()
@@ -56,15 +57,27 @@ class SteppingUITests: XCTestCase {
 
 		let save = tablesQuery.buttons["save"]
 		save.tap()
+	}
+
+	func testBeaconDetail() throws {
+
+		let app = XCUIApplication()
+		app.launch()
+
+		app.tables["list"]/*@START_MENU_TOKEN@*/.buttons["Optional(\"Test\")"]/*[[".cells[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"]",".buttons[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"]",".buttons[\"Optional(\\\"Test\\\")\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+		app.navigationBars.buttons["My iBeacons"].tap()
 
 	}
 
-	func testLaunchPerformance() throws {
-		if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-			// This measures how long it takes to launch your application.
-			measure(metrics: [XCTApplicationLaunchMetric()]) {
-				XCUIApplication().launch()
-			}
-		}
+	func testDeleteBeacon() throws {
+
+		let app = XCUIApplication()
+		app.launch()
+
+		let listTable = app.tables["list"]
+		XCTAssertEqual(listTable.cells.count, 1)
+		listTable/*@START_MENU_TOKEN@*/.buttons["Optional(\"Test\")"]/*[[".cells[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"]",".buttons[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"]",".buttons[\"Optional(\\\"Test\\\")\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+		listTable/*@START_MENU_TOKEN@*/.buttons["Delete"]/*[[".cells[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"].buttons[\"Delete\"]",".buttons[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
 	}
 }

@@ -34,10 +34,10 @@ struct ContentView: View {
 					RemaingBeaconCount(count: items.count, maxBeaconCount: maxBeaconCount)
 					List {
 						ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-							BeaconItemCell(index:index, item:item, session: session)
+							BeaconItemCell(index:index, item:item, session: session).accessibility(identifier: "\(String(describing: item.name))")
 						}
 						.onDelete(perform: deleteItems)
-					}
+					}.accessibility(identifier: "list")
 				}
 			}
 			.navigationBarTitle("My iBeacons")

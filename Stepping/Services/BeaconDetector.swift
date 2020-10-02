@@ -76,6 +76,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 		locationManager.stopRangingBeacons(satisfying: constraint)
 		beaconItems.removeValue(forKey: beaconItem.uuid!)
+		foundBeacons.removeValue(forKey: beaconItem.uuid!)
 	}
 
 	func stopScanningAll() {
