@@ -31,14 +31,14 @@ struct AddNewBeacon: View {
 		NavigationView {
 			Form {
 				Section(header: Text("iBeacon"), content: {
-					TextField("Name ex: My Room", text: $name)
-					TextField("UUID", text: $id)
-					TextField("Major ex: 3", text: $major)
-					TextField("Minor ex: 1", text: $minor)
+					TextField("Name ex: My Room", text: $name).accessibility(identifier: "name")
+					TextField("UUID", text: $id).accessibility(identifier: "uuid")
+					TextField("Major ex: 3", text: $major).accessibility(identifier: "major")
+					TextField("Minor ex: 1", text: $minor).accessibility(identifier: "minor")
 				})
 				Section(header: Text("Notification"), content: {
 					TextField("Title", text: $title)
-					TextField("Message", text: $message)
+					TextField("Message", text: $message).accessibility(identifier: "message")
 					Toggle(isOn: $notifyOnEnter) {
 						Text("Notify On Enter")
 					}
@@ -51,6 +51,7 @@ struct AddNewBeacon: View {
 						addItem()
 						sessionController.updateMonitoring()
 					}.disabled(shouldDisableSaveButton)
+					.accessibility(identifier: "save")
 				}
 			}
 			.navigationTitle("Add New iBeacon")
