@@ -64,18 +64,15 @@ class SteppingUITests: XCTestCase {
 		let app = XCUIApplication()
 		app.launch()
 
-		app.tables["list"]/*@START_MENU_TOKEN@*/.buttons["Optional(\"Test\")"]/*[[".cells[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"]",".buttons[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"]",".buttons[\"Optional(\\\"Test\\\")\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+		app.tables["list"].cells.element(boundBy: 0).tap()
 		app.navigationBars.buttons["My iBeacons"].tap()
 
 	}
 
 	func testDeleteBeacon() throws {
 
-		let app = XCUIApplication()
-		app.launch()
-
-		let listTable = app.tables["list"]
-		listTable/*@START_MENU_TOKEN@*/.buttons["Optional(\"Test\")"]/*[[".cells[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"]",".buttons[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"]",".buttons[\"Optional(\\\"Test\\\")\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+		let listTable = XCUIApplication().tables["list"]
+		listTable.swipeLeft()
 		listTable/*@START_MENU_TOKEN@*/.buttons["Delete"]/*[[".cells[\"Test\\n4AD3F9C4-EEA0-4067-93B9-30591748A143\\nMajor:\\n3\\nMinor:\\n1\"].buttons[\"Delete\"]",".buttons[\"Delete\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 
 	}
