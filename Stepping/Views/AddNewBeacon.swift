@@ -12,13 +12,22 @@ struct AddNewBeacon: View {
 	
 	@Environment(\.managedObjectContext) private var viewContext
 	@Environment(\.presentationMode) var presentationMode
-	
-	@State private var id = ""
-	@State private var name = ""
-	@State private var major = ""
-	@State private var minor = ""
-	@State private var title = ""
-	@State private var message = ""
+
+	@State private var theBeacon =
+		SteppingBeacon(beacon: Beacon(uuid: "",
+									  name: "",
+									  major: "",
+									  minor: ""),
+					   enterAction: Action(eventType: .enter,
+										   title: "",
+										   message: "",
+										   shouldNotify: true),
+					   exitAction: Action(eventType:
+											.exit,
+										  title: "",
+										  message: "",
+										  shouldNotify: true))
+
 	@State private var notifyOnEnter = false
 	@State private var notifyOnExit = true
 	
@@ -31,21 +40,33 @@ struct AddNewBeacon: View {
 		NavigationView {
 			Form {
 				Section(header: Text("iBeacon"), content: {
-					TextField("Name ex: My Room", text: $name).accessibility(identifier: "name")
-					TextField("UUID", text: $id).accessibility(identifier: "uuid")
-					TextField("Major ex: 3", text: $major).accessibility(identifier: "major")
-					TextField("Minor ex: 1", text: $minor).accessibility(identifier: "minor")
+					TextField("Name ex: My Room", text: $theBeacon.beacon.name).accessibility(identifier: "name")
+					TextField("Beacon UUID", text: $theBeacon.beacon.uuid).accessibility(identifier: "uuid")
+					TextField("Major ex: 3", text: $theBeacon.beacon.major).accessibility(identifier: "major")
+					TextField("Minor ex: 1", text: $theBeacon.beacon.minor).accessibility(identifier: "minor")
 				})
-				Section(header: Text("Notification"), content: {
-					TextField("Title", text: $title)
-					TextField("Message", text: $message).accessibility(identifier: "message")
-					Toggle(isOn: $notifyOnEnter) {
-						Text("Notify On Enter")
-					}
-					Toggle(isOn: $notifyOnExit) {
-						Text("Notify On Exit")
-					}
-				})
+
+				Toggle(isOn: $notifyOnEnter.animation()) {
+					Text("Notify On Enter")
+				}
+				if (notifyOnEnter) {
+					Section(header: Text("Notification for entering the area"), content: {
+						TextField("Title", text: $theBeacon.enterAction.title)
+						TextField("Message", text: $theBeacon.enterAction.message).accessibility(identifier: "message")
+					})
+				}
+
+				Toggle(isOn: $notifyOnExit.animation()) {
+					Text("Notify On Exit")
+				}
+
+				if (notifyOnExit) {
+					Section(header: Text("Notification for exiting the area"), content: {
+						TextField("Title", text: $theBeacon.exitAction.title)
+						TextField("Message", text: $theBeacon.exitAction.message).accessibility(identifier: "message")
+					})
+				}
+
 				Section {
 					Button("Save") {
 						addItem()
@@ -67,39 +88,49 @@ struct AddNewBeacon: View {
 	}
 	
 	var shouldDisableSaveButton : Bool {
-		name.isEmpty || id.isEmpty || major.isEmpty || minor.isEmpty || message.isEmpty
+		theBeacon.beacon.name.isEmpty || theBeacon.beacon.uuid.isEmpty || theBeacon.beacon.major.isEmpty || theBeacon.beacon.minor.isEmpty
 	}
 	
 	private func addItem() {
 		errorMessage = ""
 		showingAlert = false
-		
-		let validationService = ValidationService()
-		var result: SteppingBeacon!
+
 		do {
-			result = try validationService.validateBeaconItem(id: id, name: name, major: major, minor: minor, title: title, message: message, notifyOnExit: notifyOnExit, notifyOnEnter: notifyOnEnter)
+			try theBeacon.validate()
 		} catch {
 			let nsError = error as NSError
 			errorMessage = nsError.localizedDescription
 			showingAlert = true
-		}
-		
-		guard let beacon = result else {
 			return
 		}
 		
 		withAnimation {
 			let newItem = BeaconItem(context: viewContext)
-			newItem.uuid = beacon.uuid
-			newItem.name = beacon.name
-			newItem.major = beacon.major
-			newItem.minor = beacon.minor
-			newItem.title = title == "" ? "Did you forget something from \(beacon.name)" : beacon.title
-			newItem.message = beacon.message
+			newItem.uuid = UUID(uuidString: theBeacon.beacon.uuid)
+			newItem.name = theBeacon.beacon.name
+			newItem.major = Int16(theBeacon.beacon.major)!
+			newItem.minor = Int16(theBeacon.beacon.minor)!
+
+			newItem.notifyOnExit = notifyOnExit
+			newItem.notifyOnEnter = notifyOnEnter
+
+			if (notifyOnExit) {
+				//TODO: Change here after UI
+				newItem.exitTitle = theBeacon.exitAction.title
+				newItem.exitMessage = theBeacon.exitAction.message
+			}
+
+			if (notifyOnEnter) {
+				//TODO: Change here after UI
+
+				newItem.enterTitle = theBeacon.enterAction.title
+				newItem.enterMessage = theBeacon.enterAction.message
+			}
+
+			newItem.notifyOnExit = notifyOnExit
+			newItem.notifyOnEnter = notifyOnEnter
 			newItem.timestamp = Date()
-			newItem.notifyOnExit = beacon.notifyOnExit
-			newItem.notifyOnEnter = beacon.notifyOnEnter
-			
+
 			do {
 				try viewContext.save()
 				self.presentationMode.wrappedValue.dismiss()

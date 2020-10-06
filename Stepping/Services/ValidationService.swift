@@ -9,7 +9,7 @@ import Foundation
 
 struct ValidationService {
 
-	func validateBeaconItem(id: String, name: String, major: String, minor: String, title: String?, message: String, notifyOnExit: Bool, notifyOnEnter: Bool)  throws -> SteppingBeacon {
+	func createSteppingBeacon(id: String, name: String, major: String, minor: String, title: String?, message: String, notifyOnExit: Bool, notifyOnEnter: Bool)  throws -> SteppingBeacon {
 
 		guard let uuid = UUID(uuidString: id)  else {
 			throw ValidationError.invalidUUID
@@ -36,14 +36,16 @@ struct ValidationService {
 		}
 
 		var result = SteppingBeacon()
-		result.uuid = uuid
-		result.name = name
-		result.major = parsedMajor
-		result.minor = parsedMinor
-		result.title = title ?? "Did you forget something from \(name)?"
-		result.message =  message
-		result.notifyOnEnter = notifyOnEnter
-		result.notifyOnExit = notifyOnExit
+		result.beacon = Beacon(uuid: uuid.uuidString, name: name, major: "\(parsedMajor)", minor: "\(parsedMinor)")
+
+		if (notifyOnExit) {
+			result.exitAction = Action(eventType: .exit, title: title ?? "Did you forget something from \(name)?", message: message, shouldNotify: true)
+		}
+
+		if (notifyOnEnter) {
+			result.enterAction = Action(eventType: .enter, title: title ?? "Did you forget something from \(name)?", message: message, shouldNotify: true)
+		}
+
 		return result
 	}
 }

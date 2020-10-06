@@ -26,7 +26,7 @@ class ValidationServiceTests: XCTestCase {
 		let expectedError = ValidationError.invalidUUID
 		var error: ValidationError?
 		
-		XCTAssertThrowsError(try self.validationService.validateBeaconItem(id: "invalid uuid",
+		XCTAssertThrowsError(try self.validationService.createSteppingBeacon(id: "invalid uuid",
 																		   name: "Test Becaon",
 																		   major: "3",
 																		   minor: "1",
@@ -47,7 +47,7 @@ class ValidationServiceTests: XCTestCase {
 		
 		let validUUIDStr = "77048D46-2AB4-44B2-9C72-2764B8A899C5"
 		
-		XCTAssertThrowsError(try self.validationService.validateBeaconItem(id: validUUIDStr,
+		XCTAssertThrowsError(try self.validationService.createSteppingBeacon(id: validUUIDStr,
 																		   name: " ",
 																		   major: "3",
 																		   minor: "1", title: nil,
@@ -67,7 +67,7 @@ class ValidationServiceTests: XCTestCase {
 		
 		let validUUIDStr = "77048D46-2AB4-44B2-9C72-2764B8A899C5"
 		
-		XCTAssertThrowsError(try self.validationService.validateBeaconItem(id: validUUIDStr,
+		XCTAssertThrowsError(try self.validationService.createSteppingBeacon(id: validUUIDStr,
 																		   name: "Test Beacon",
 																		   major: "",
 																		   minor: "1",
@@ -89,7 +89,7 @@ class ValidationServiceTests: XCTestCase {
 		
 		let validUUIDStr = "77048D46-2AB4-44B2-9C72-2764B8A899C5"
 		
-		XCTAssertThrowsError(try self.validationService.validateBeaconItem(id: validUUIDStr,
+		XCTAssertThrowsError(try self.validationService.createSteppingBeacon(id: validUUIDStr,
 																		   name: "Test Beacon",
 																		   major: "3",
 																		   minor: "",
@@ -110,7 +110,7 @@ class ValidationServiceTests: XCTestCase {
 		
 		let validUUIDStr = "77048D46-2AB4-44B2-9C72-2764B8A899C5"
 		
-		XCTAssertThrowsError(try self.validationService.validateBeaconItem(id: validUUIDStr,
+		XCTAssertThrowsError(try self.validationService.createSteppingBeacon(id: validUUIDStr,
 																		   name: "Test Beacon",
 																		   major: "3",
 																		   minor: "1",
@@ -131,7 +131,7 @@ class ValidationServiceTests: XCTestCase {
 		
 		let validUUIDStr = "77048D46-2AB4-44B2-9C72-2764B8A899C5"
 		
-		XCTAssertThrowsError(try self.validationService.validateBeaconItem(id: validUUIDStr,
+		XCTAssertThrowsError(try self.validationService.createSteppingBeacon(id: validUUIDStr,
 																		   name: "Test Beacon",
 																		   major: "3",
 																		   minor: "1",
@@ -152,7 +152,7 @@ class ValidationServiceTests: XCTestCase {
 		let name = "Test Beacon"
 		let expectedTitle = "Did you forget something from \(name)?"
 		
-		let result = try self.validationService.validateBeaconItem(id: validUUIDStr,
+		let result = try self.validationService.createSteppingBeacon(id: validUUIDStr,
 																   name: name,
 																   major: "3",
 																   minor: "1",

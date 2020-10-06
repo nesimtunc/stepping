@@ -35,8 +35,8 @@ struct DetailView: View {
 				.foregroundColor(.secondary)
 			
 			Text("Notification:")
-			Text(item.title!)
-			Text(item.message!)
+//			Text(item.title!)
+//			Text(item.message!)
 
 			if beacon != nil {
 				BeaconView(beacon: beacon)

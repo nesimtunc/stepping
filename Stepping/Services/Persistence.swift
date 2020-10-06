@@ -19,10 +19,15 @@ fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
 		newItem.name = "Beacon \(i)"
 		newItem.major = Int16(10 * i)
 		newItem.minor = Int16(1 * i)
-		newItem.title = "Did you forget from?"
-		newItem.message = "Vallet something?"
+
+		newItem.exitTitle = "Did you forget something from your room?"
+		newItem.exitMessage = "Wallet, Keys?"
 		newItem.notifyOnExit = true
+
+		newItem.enterTitle = "You're about to entering your house"
+		newItem.enterMessage = "Please wash your hands!"
 		newItem.notifyOnEnter = false
+
 		newItem.timestamp = Date()
 	}
 	do {

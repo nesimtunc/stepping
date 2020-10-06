@@ -19,10 +19,10 @@ class SessionController: ObservableObject {
 
 	init() {
 		self.beaconExitEventCanceller = self.beaconDetector.exists.sink { beaconItem in
-			self.notificationService.show(pushNotificationId: beaconItem.uuid!.uuidString, title: beaconItem.title!, message: beaconItem.message!)
+			self.notificationService.show(pushNotificationId: beaconItem.uuid!.uuidString, title: beaconItem.exitTitle!, message: beaconItem.exitMessage!)
 		}
 		self.beaconEnterEventCanceller = self.beaconDetector.enters.sink { beaconItem in
-			self.notificationService.show(pushNotificationId: beaconItem.uuid!.uuidString, title: beaconItem.title!, message: beaconItem.message!)
+			self.notificationService.show(pushNotificationId: beaconItem.uuid!.uuidString, title: beaconItem.enterTitle!, message: beaconItem.enterMessage!)
 		}
 	}
 	
