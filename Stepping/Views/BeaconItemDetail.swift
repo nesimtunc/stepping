@@ -26,39 +26,64 @@ struct DetailView: View {
 	var beacon: CLBeacon!
 	
 	var body: some View {
-		VStack(alignment: .leading, spacing: 16.0) {
-			
-			Text(item.name!)
-				.font(.title)
-			Text(item.uuid!.uuidString)
-				.font(.subheadline)
-				.foregroundColor(.secondary)
-			
-			Text("Notification:")
-//			Text(item.title!)
-//			Text(item.message!)
-
-			if beacon != nil {
-				BeaconView(beacon: beacon)
+		List {
+			Section(header: Text("Beacon")) {
+				RowItem(title: "UUID:", detail: item.uuid!.uuidString)
 			}
+			Section(header: Text("Notifications")) {
+				if (item.notifyOnEnter) {
+					RowItem(title: "Enter Title", detail: item.enterTitle!)
+					RowItem(title: "Enter Message", detail: item.enterMessage!)
+				}
+				
+				if (item.notifyOnExit) {
+					RowItem(title: "Exit Title", detail: item.exitTitle!)
+					RowItem(title: "Exit Message", detail: item.exitMessage!)
+				}
+			}
+			
+			if beacon != nil {
+				Section(header:
+							Text("Status")) {
+					BeaconView(beacon: beacon)
+				}
+				
+			}
+		}.navigationTitle(item.name!)
+		
+	}
+	
+}
+
+struct RowItem: View {
+	var title = ""
+	var detail = ""
+
+	var body: some View {
+		Text(title)
+			.font(.title3)
+			.fontWeight(.bold)
+			.multilineTextAlignment(.leading)
+		if detail.count > 0 {
+			Text(detail)
+				.multilineTextAlignment(.leading)
 		}
 	}
 }
 
 struct BeaconView: View {
-
+	
 	var beacon: CLBeacon
-
+	
 	var body: some View {
-		Text("Rssi: \(beacon.rssi)")
-		Text("Promixty:")
+		RowItem(title: "Rssi", detail: "\(beacon.rssi)")
+		RowItem(title: "Promixty", detail: "")
 		Text("\(getPromixityText(beacon.proximity))")
 			.font(Font.system(size: 40, weight: .medium, design: .rounded))
-
 		ProgressView(value: getProgressViewValue(beacon.proximity))
 			.accentColor(getProgressViewColor(beacon.proximity))
 	}
-
+	
 	private func getPromixityText(_ proximity: CLProximity) -> String {
 		switch proximity {
 			case .far:
@@ -73,7 +98,7 @@ struct BeaconView: View {
 				return "UNKNOWN"
 		}
 	}
-
+	
 	private func getProgressViewValue(_ proximity: CLProximity) -> Double {
 		switch proximity {
 			case .far:
@@ -88,7 +113,7 @@ struct BeaconView: View {
 				return 0.0
 		}
 	}
-
+	
 	private func getProgressViewColor(_ proximity: CLProximity) -> Color {
 		switch proximity {
 			case .far:
