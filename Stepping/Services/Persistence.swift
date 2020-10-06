@@ -36,19 +36,21 @@ fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
 
 struct PersistenceController {
 	static let shared = PersistenceController()
-	
+
+	let container: NSPersistentCloudKitContainer
+	let containerName = "Stepping"
+	let entityName =  "BeaconItem"
+
 	static var preview: PersistenceController = {
 		createSomeDummyData(count: 3)
 	}()
-	
+
 	static var fullOfDataPreview: PersistenceController = {
 		createSomeDummyData(count: 11)
 	}()
 	
-	let container: NSPersistentCloudKitContainer
-	
 	init(inMemory: Bool = false) {
-		container = NSPersistentCloudKitContainer(name: "Stepping")
+		container = NSPersistentCloudKitContainer(name: containerName)
 		container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 		if inMemory {
 			container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
@@ -58,5 +60,18 @@ struct PersistenceController {
 				fatalError("Unresolved error \(error), \(error.userInfo)")
 			}
 		})
+	}
+
+	func getBeacons() -> [BeaconItem] {
+		let request = NSFetchRequest<BeaconItem>(entityName: entityName)
+		return try! container.viewContext.fetch(request)
+	}
+
+	func getItemById(_ uuid: UUID) -> BeaconItem? {
+		let request = NSFetchRequest<BeaconItem>(entityName: entityName)
+
+		let result = try! container.viewContext.fetch(request)
+		// NSPredicate didn't work for UUID.
+		return result.first(where: {$0.uuid == uuid})
 	}
 }

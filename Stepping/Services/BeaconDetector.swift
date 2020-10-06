@@ -12,8 +12,6 @@ import CoreData
 
 class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 
-	let coreDataManager: CoreDataManager!
-
 	private let locationManager = CLLocationManager()
 
 	@Published private (set) var permissionGranted = false
@@ -23,8 +21,9 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 	@Published var beaconItems: [UUID: BeaconItem] = [:]
 	@Published var foundBeacons: [UUID: CLBeacon] = [:]
 
+
+
 	override init() {
-		self.coreDataManager = CoreDataManager()
 		super.init()
 		locationManager.delegate = self
 		locationManager.requestAlwaysAuthorization()
@@ -50,7 +49,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 	func startMonitoring() {
 		stopScanningAll()
-		for item in coreDataManager.getBeacons() {
+		for item in PersistenceController.shared.getBeacons() {
 			guard let beaconID = item.uuid, beaconItems[beaconID] == nil else { return }
 
 			let constraint = CLBeaconIdentityConstraint(uuid: item.uuid!,
@@ -80,7 +79,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 	}
 
 	func stopScanningAll() {
-		for item in coreDataManager.getBeacons() {
+		for item in PersistenceController.shared.getBeacons() {
 			let constraint = CLBeaconIdentityConstraint(uuid: item.uuid!,
 														major: CLBeaconMajorValue(item.major),
 														minor:  CLBeaconMinorValue(item.minor))

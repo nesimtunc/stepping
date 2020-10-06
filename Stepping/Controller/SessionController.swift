@@ -10,7 +10,7 @@ import Combine
 import CoreData
 
 class SessionController: ObservableObject {
-	
+
 	let beaconDetector = BeaconDetector()
 	private let notificationService = NotificationService()
 	

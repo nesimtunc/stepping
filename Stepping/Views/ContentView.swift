@@ -12,12 +12,12 @@ struct ContentView: View {
 	@Environment(\.managedObjectContext) private var viewContext
 	
 	@State private var showingAddScreen = false
-	
+
 	@State private var showingAlert = false
 	@State private var errorMessage = ""
 	
 	private let session = SessionController()
-	
+
 	@FetchRequest(
 		sortDescriptors: [NSSortDescriptor(keyPath: \BeaconItem.timestamp, ascending: false)],
 		animation: .default)

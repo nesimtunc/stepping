@@ -23,7 +23,6 @@
 		48C63D2F2522E16800912426 /* SteppingBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D2E2522E16800912426 /* SteppingBeacon.swift */; };
 		48DFA2632525804C00A42639 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA2622525804C00A42639 /* NotificationService.swift */; };
 		48DFA26925258AD000A42639 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA26825258AD000A42639 /* SessionController.swift */; };
-		48DFA26E2525F21F00A42639 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA26D2525F21F00A42639 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 		48C63D2E2522E16800912426 /* SteppingBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingBeacon.swift; sourceTree = "<group>"; };
 		48DFA2622525804C00A42639 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		48DFA26825258AD000A42639 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
-		48DFA26D2525F21F00A42639 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +188,6 @@
 				483BAEB92525756700F3B734 /* BeaconDetector.swift */,
 				48DFA2622525804C00A42639 /* NotificationService.swift */,
 				48C63D192522D24D00912426 /* ValidationService.swift */,
-				48DFA26D2525F21F00A42639 /* CoreDataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -335,7 +332,6 @@
 				48461F19251AD1140053F4D7 /* SteppingApp.swift in Sources */,
 				48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */,
 				48B27CEB251C43E400ABC77D /* AddNewBeacon.swift in Sources */,
-				48DFA26E2525F21F00A42639 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

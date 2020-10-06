@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import CoreData
 
 class NotificationService: NSObject, ObservableObject {
 	
