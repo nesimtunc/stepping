@@ -15,7 +15,6 @@
 		48461F20251AD1180053F4D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48461F1F251AD1180053F4D7 /* Preview Assets.xcassets */; };
 		48461F22251AD1180053F4D7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F21251AD1180053F4D7 /* Persistence.swift */; };
 		48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48461F23251AD1180053F4D7 /* Stepping.xcdatamodeld */; };
-		48461F3B251AD1190053F4D7 /* SteppingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F3A251AD1190053F4D7 /* SteppingUITests.swift */; };
 		4889C9092526A28D00346A22 /* BeaconItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889C9082526A28D00346A22 /* BeaconItemDetail.swift */; };
 		48ADE052252C94A300D957FD /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ADE051252C94A300D957FD /* Launch.swift */; };
 		48B27CEB251C43E400ABC77D /* AddNewBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */; };
@@ -60,8 +59,6 @@
 		48461F2B251AD1190053F4D7 /* SteppingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteppingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48461F31251AD1190053F4D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48461F36251AD1190053F4D7 /* SteppingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteppingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48461F3A251AD1190053F4D7 /* SteppingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppingUITests.swift; sourceTree = "<group>"; };
-		48461F3C251AD1190053F4D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4889C9082526A28D00346A22 /* BeaconItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconItemDetail.swift; sourceTree = "<group>"; };
 		48ADE051252C94A300D957FD /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBeacon.swift; sourceTree = "<group>"; };
@@ -126,7 +123,6 @@
 			children = (
 				48461F17251AD1140053F4D7 /* Stepping */,
 				48461F2E251AD1190053F4D7 /* SteppingTests */,
-				48461F39251AD1190053F4D7 /* SteppingUITests */,
 				48461F16251AD1140053F4D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,15 +170,6 @@
 				483C818525241A3A000DEF8B /* PersistenceTests.swift */,
 			);
 			path = SteppingTests;
-			sourceTree = "<group>";
-		};
-		48461F39251AD1190053F4D7 /* SteppingUITests */ = {
-			isa = PBXGroup;
-			children = (
-				48461F3A251AD1190053F4D7 /* SteppingUITests.swift */,
-				48461F3C251AD1190053F4D7 /* Info.plist */,
-			);
-			path = SteppingUITests;
 			sourceTree = "<group>";
 		};
 		48C63D202522E0D200912426 /* Model */ = {
@@ -364,7 +351,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48461F3B251AD1190053F4D7 /* SteppingUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
