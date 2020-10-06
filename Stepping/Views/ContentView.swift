@@ -10,14 +10,14 @@ import CoreData
 
 struct ContentView: View {
 	@Environment(\.managedObjectContext) private var viewContext
-	
-	@State private var showingAddScreen = false
 
+	@State private var showingAddScreen = false
+	
 	@State private var showingAlert = false
 	@State private var errorMessage = ""
 	
 	private let session = SessionController()
-
+	
 	@FetchRequest(
 		sortDescriptors: [NSSortDescriptor(keyPath: \BeaconItem.timestamp, ascending: false)],
 		animation: .default)
@@ -54,7 +54,7 @@ struct ContentView: View {
 				AddNewBeacon(sessionController: session).environment(\.managedObjectContext, self.viewContext)
 			})
 			.alert(isPresented: $showingAlert) {
-				Alert(title: Text("Error on deleting item"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+				Alert(title: Text("Warning"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
 			}
 		}
 	}
@@ -83,14 +83,14 @@ struct BeaconItemCell: View {
 	let index: Int
 	let item: BeaconItem
 	let session: SessionController
-
-		var body: some View {
-			NavigationLink(destination: BeaconItemDetail(item: item, beaconDetector: session.beaconDetector)) {
+	
+	var body: some View {
+		NavigationLink(destination: BeaconItemDetail(item: item, beaconDetector: session.beaconDetector)) {
 			VStack {
 				HStack {
 					Label("", systemImage: "\(index + 1).circle")
 						.font(.title)
-
+					
 					VStack {
 						Text("\(item.name ?? "")")
 							.font(.headline)
@@ -102,7 +102,7 @@ struct BeaconItemCell: View {
 							.foregroundColor(.secondary)
 							.lineLimit(0)
 							.frame(maxWidth: .infinity, alignment: .leading)
-
+						
 						HStack {
 							Text("Major:")
 								.font(.headline)

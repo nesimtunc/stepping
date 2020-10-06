@@ -12,7 +12,7 @@ import CoreData
 class SessionController: ObservableObject {
 
 	let beaconDetector = BeaconDetector()
-	private let notificationService = NotificationService()
+	let notificationService = NotificationService()
 	
 	private var beaconExitEventCanceller: AnyCancellable? = nil
 	private var beaconEnterEventCanceller: AnyCancellable? = nil

@@ -21,11 +21,13 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 	@Published var beaconItems: [UUID: BeaconItem] = [:]
 	@Published var foundBeacons: [UUID: CLBeacon] = [:]
 
-
-
 	override init() {
 		super.init()
 		locationManager.delegate = self
+		requestLocationPermission()
+	}
+
+	func requestLocationPermission() {
 		locationManager.requestAlwaysAuthorization()
 	}
 
@@ -37,8 +39,9 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 				startMonitoring()
 				return
 			}
+		} else {
+			publish(permissionGranted: false)
 		}
-		publish(permissionGranted: false)
 	}
 
 	func publish(permissionGranted: Bool) {

@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct SteppingApp: App {
 	let persistenceController = PersistenceController.shared
-	
+
+	let userSettings = UserSettings()
+
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
-				.environment(\.managedObjectContext, persistenceController.container.viewContext)
+			Home().environment(\.managedObjectContext, persistenceController.container.viewContext)
+				.environmentObject(userSettings)
 		}
 	}
 }
