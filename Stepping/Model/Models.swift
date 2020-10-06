@@ -52,25 +52,49 @@ extension SteppingBeacon {
 			throw ValidationError.invalidMinor
 		}
 
-		//TODO: check on multiple action
-		//		if message.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-		//			throw ValidationError.notificationMessageRequired
-		//		}
-
-		if !self.exitAction.shouldNotify && !self.enterAction.shouldNotify {
+		if (self.exitAction == nil && self.enterAction == nil) {
 			throw ValidationError.atLeastOneEventRequired
 		}
 
-		//		var result = SteppingBeacon()
-		//		result.beacon = Beacon(uuid: uuid.uuidString, name: name, major: "\(parsedMajor)", minor: "\(parsedMinor)")
-		//
-		//		if (self.notifyOnExit) {
-		//			result.exitAction = Action(eventType: .exit, title: title ?? "You're about to leave \(name)?", message: message, shouldNotify: true)
-		//		}
-		//
-		//		if (notifyOnEnter) {
-		//			result.enterAction = Action(eventType: .enter, title: title ?? "You're entering to \(name)?", message: message, shouldNotify: true)
-		//		}
+		if (!self.exitAction.shouldNotify && !self.enterAction.shouldNotify) {
+			throw ValidationError.atLeastOneEventRequired
+		}
 
+		if (self.exitAction != nil &&  (self.exitAction!.shouldNotify && self.exitAction.message
+			.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)) {
+			throw ValidationError.notificationMessageRequired
+		}
+
+		if (self.enterAction != nil && (self.enterAction.shouldNotify && self.enterAction.message
+			.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)) {
+			throw ValidationError.notificationMessageRequired
+		}
+	}
+}
+
+
+enum ValidationError: LocalizedError {
+	case invalidUUID
+	case invalidMajor
+	case invalidMinor
+	case nameRequired
+	case notificationMessageRequired
+	case atLeastOneEventRequired
+
+	var errorDescription: String? {
+		switch self {
+			case .invalidUUID:
+				return "Invalid UUID for iBeacon"
+			case .invalidMajor:
+				return "Major can be only number. Think of floor number or a branch code"
+			case .invalidMinor:
+				return "Minor can be only number. Think of room number or a subbranch code"
+			case .nameRequired:
+				return "You need give a name to your iBeacon"
+			case .notificationMessageRequired:
+				return "A notification message is required"
+			case .atLeastOneEventRequired:
+				return "In order to get notification you need one at least choose on trigger action."
+		}
 	}
 }

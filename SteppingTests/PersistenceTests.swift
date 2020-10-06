@@ -31,8 +31,8 @@ class PersistenceTests: XCTestCase {
 		newItem.name = "Test Beacon"
 		newItem.major = 3
 		newItem.minor = 1
-		newItem.title = "Did you forget something from your room?"
-		newItem.message = "Wallet, Pasmo"
+		newItem.exitTitle = "Did you forget something from your room?"
+		newItem.exitMessage = "Wallet, Pasmo"
 		newItem.timestamp = Date()
 		newItem.notifyOnEnter = false
 		newItem.notifyOnExit = true

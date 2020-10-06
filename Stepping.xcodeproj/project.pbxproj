@@ -18,8 +18,7 @@
 		48461F3B251AD1190053F4D7 /* SteppingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F3A251AD1190053F4D7 /* SteppingUITests.swift */; };
 		4889C9092526A28D00346A22 /* BeaconItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889C9082526A28D00346A22 /* BeaconItemDetail.swift */; };
 		48B27CEB251C43E400ABC77D /* AddNewBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */; };
-		48C63D152522D21800912426 /* ValidationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D142522D21800912426 /* ValidationServiceTests.swift */; };
-		48C63D1A2522D24D00912426 /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D192522D24D00912426 /* ValidationService.swift */; };
+		48C63D152522D21800912426 /* ModelValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D142522D21800912426 /* ModelValidationTests.swift */; };
 		48C63D2F2522E16800912426 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C63D2E2522E16800912426 /* Models.swift */; };
 		48DFA2632525804C00A42639 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA2622525804C00A42639 /* NotificationService.swift */; };
 		48DFA26925258AD000A42639 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA26825258AD000A42639 /* SessionController.swift */; };
@@ -60,8 +59,7 @@
 		48461F3C251AD1190053F4D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4889C9082526A28D00346A22 /* BeaconItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconItemDetail.swift; sourceTree = "<group>"; };
 		48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBeacon.swift; sourceTree = "<group>"; };
-		48C63D142522D21800912426 /* ValidationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationServiceTests.swift; sourceTree = "<group>"; };
-		48C63D192522D24D00912426 /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
+		48C63D142522D21800912426 /* ModelValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelValidationTests.swift; sourceTree = "<group>"; };
 		48C63D2E2522E16800912426 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		48DFA2622525804C00A42639 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		48DFA26825258AD000A42639 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
@@ -157,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				48461F31251AD1190053F4D7 /* Info.plist */,
-				48C63D142522D21800912426 /* ValidationServiceTests.swift */,
+				48C63D142522D21800912426 /* ModelValidationTests.swift */,
 				483C818525241A3A000DEF8B /* PersistenceTests.swift */,
 			);
 			path = SteppingTests;
@@ -187,7 +185,6 @@
 				48461F21251AD1180053F4D7 /* Persistence.swift */,
 				483BAEB92525756700F3B734 /* BeaconDetector.swift */,
 				48DFA2622525804C00A42639 /* NotificationService.swift */,
-				48C63D192522D24D00912426 /* ValidationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -327,7 +324,6 @@
 				48C63D2F2522E16800912426 /* Models.swift in Sources */,
 				48DFA26925258AD000A42639 /* SessionController.swift in Sources */,
 				48DFA2632525804C00A42639 /* NotificationService.swift in Sources */,
-				48C63D1A2522D24D00912426 /* ValidationService.swift in Sources */,
 				4889C9092526A28D00346A22 /* BeaconItemDetail.swift in Sources */,
 				48461F19251AD1140053F4D7 /* SteppingApp.swift in Sources */,
 				48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */,
@@ -339,7 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48C63D152522D21800912426 /* ValidationServiceTests.swift in Sources */,
+				48C63D152522D21800912426 /* ModelValidationTests.swift in Sources */,
 				483C818625241A3A000DEF8B /* PersistenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
