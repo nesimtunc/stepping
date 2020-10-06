@@ -115,15 +115,12 @@ struct AddNewBeacon: View {
 			newItem.notifyOnEnter = notifyOnEnter
 
 			if (notifyOnExit) {
-				//TODO: Change here after UI
-				newItem.exitTitle = theBeacon.exitAction.title
+				newItem.exitTitle = theBeacon.exitAction.title.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 ? "Did you forget something from \(theBeacon.beacon.name)" : theBeacon.exitAction.title
 				newItem.exitMessage = theBeacon.exitAction.message
 			}
 
 			if (notifyOnEnter) {
-				//TODO: Change here after UI
-
-				newItem.enterTitle = theBeacon.enterAction.title
+				newItem.enterTitle = theBeacon.enterAction.title.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 ? "You're about to entering to \(theBeacon.beacon.name) area" : theBeacon.exitAction.title
 				newItem.enterMessage = theBeacon.enterAction.message
 			}
 
