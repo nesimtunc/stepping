@@ -31,7 +31,7 @@ struct ValidationService {
 			throw ValidationError.notificationMessageRequired
 		}
 
-		if !notifyOnExit && !notifyOnExit {
+		if !notifyOnExit && !notifyOnEnter {
 			throw ValidationError.atLeastOneEventRequired
 		}
 
