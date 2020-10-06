@@ -94,7 +94,7 @@ enum ValidationError: LocalizedError {
 			case .notificationMessageRequired:
 				return "A notification message is required"
 			case .atLeastOneEventRequired:
-				return "In order to get notification you need one at least choose on trigger action."
+				return "In order to get notification you need one at least choose on trigger action. Exit or Enter"
 		}
 	}
 }

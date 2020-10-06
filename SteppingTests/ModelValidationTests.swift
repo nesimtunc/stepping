@@ -122,7 +122,7 @@ class ModelValidationTests: XCTestCase {
 		XCTAssertEqual(expectedError, error)
 	}
 	
-	func test_at_least_one_notification_action_selected() throws {
+	func test_at_no_notification_action_selected() throws {
 		let expectedError = ValidationError.atLeastOneEventRequired
 		var error: ValidationError?
 		
@@ -132,10 +132,7 @@ class ModelValidationTests: XCTestCase {
 													   major: "3",
 													   minor: "1"),
 										enterAction: nil,
-										exitAction:  Action(eventType: .exit,
-															title: "",
-															message: "Wallet, Keys?",
-															shouldNotify: true))
+										exitAction:  nil)
 		
 		XCTAssertThrowsError(try testBeacon.validate())
 		{ throwError in
@@ -143,5 +140,21 @@ class ModelValidationTests: XCTestCase {
 		}
 		
 		XCTAssertEqual(expectedError, error)
+	}
+
+	func test_at_least_one_notification_action_selected() throws {
+
+		let validUUIDStr = "77048D46-2AB4-44B2-9C72-2764B8A899C5"
+		let testBeacon = SteppingBeacon(beacon: Beacon(uuid: validUUIDStr,
+													   name: "Test Beacon",
+													   major: "3",
+													   minor: "1"),
+										enterAction: nil,
+										exitAction:  Action(eventType: .exit,
+															title: "",
+															message: "Hello did you forget something?",
+															shouldNotify: true))
+
+		XCTAssertNoThrow(try testBeacon.validate())
 	}
 }
