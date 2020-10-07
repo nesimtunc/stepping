@@ -12,15 +12,29 @@ struct Home: View {
 	@EnvironmentObject var userSettings: UserSettings
 	@Environment(\.managedObjectContext) private var viewContext
 
+	@State var showSplash = true
+
     var body: some View {
-		if userSettings.firstLaunch {
-			Launch()
-				.environmentObject(userSettings)
+		VStack {
+		if showSplash {
+			SplashView()
 		} else {
-			ContentView()
-				.environment(\.managedObjectContext, viewContext)
+			if userSettings.firstLaunch {
+				Launch()
+					.environmentObject(userSettings)
+			} else {
+				ContentView()
+					.environment(\.managedObjectContext, viewContext)
+			}
 		}
-    }
+		}.onAppear {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				withAnimation {
+					self.showSplash = false
+				}
+			}
+		}
+	}
 }
 
 struct Home_Previews: PreviewProvider {

@@ -34,7 +34,7 @@ struct Launch: View {
 			Button("Okay!") {
 				UserDefaults.standard.setValue("done", forKey: "firstLaunch")
 				userSettings.firstLaunch = false
-			}.padding()
+			}.padding([.top], 36)
 			Spacer()
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
