@@ -23,7 +23,6 @@
 		48DC42E1252C99A900DFDBF7 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC42E0252C99A900DFDBF7 /* Modifiers.swift */; };
 		48DC42E6252C9B9900DFDBF7 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC42E5252C9B9900DFDBF7 /* UserSettings.swift */; };
 		48DC42EB252C9D6400DFDBF7 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC42EA252C9D6400DFDBF7 /* Home.swift */; };
-		48DC42F0252CA27700DFDBF7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48DC42EF252CA27700DFDBF7 /* Launch Screen.storyboard */; };
 		48DFA2632525804C00A42639 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA2622525804C00A42639 /* NotificationService.swift */; };
 		48DFA26925258AD000A42639 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DFA26825258AD000A42639 /* SessionController.swift */; };
 /* End PBXBuildFile section */
@@ -67,7 +66,6 @@
 		48DC42E0252C99A900DFDBF7 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		48DC42E5252C9B9900DFDBF7 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		48DC42EA252C9D6400DFDBF7 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		48DC42EF252CA27700DFDBF7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		48DFA2622525804C00A42639 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		48DFA26825258AD000A42639 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,7 +147,6 @@
 				48461F26251AD1180053F4D7 /* Info.plist */,
 				48461F1E251AD1180053F4D7 /* Preview Content */,
 				48DC42E5252C9B9900DFDBF7 /* UserSettings.swift */,
-				48DC42EF252CA27700DFDBF7 /* Launch Screen.storyboard */,
 			);
 			path = Stepping;
 			sourceTree = "<group>";
@@ -294,7 +291,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48DC42F0252CA27700DFDBF7 /* Launch Screen.storyboard in Resources */,
 				48461F20251AD1180053F4D7 /* Preview Assets.xcassets in Resources */,
 				48461F1D251AD1180053F4D7 /* Assets.xcassets in Resources */,
 			);
