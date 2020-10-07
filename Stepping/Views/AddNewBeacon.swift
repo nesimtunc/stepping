@@ -95,6 +95,9 @@ struct AddNewBeacon: View {
 		errorMessage = ""
 		showingAlert = false
 
+		theBeacon.enterAction.shouldNotify = notifyOnEnter
+		theBeacon.exitAction.shouldNotify = notifyOnExit
+
 		do {
 			try theBeacon.validate()
 		} catch {
