@@ -5,6 +5,6 @@ This is an extended version of [iForget](https://github.com/nesimtunc/iForget) a
 
 You can see app's preview on YouTube: https://youtu.be/ZmLFVXJ5dVA
 
-Soon to be on App Store
+Available on App Store
 
 [![](https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred_2x.png)](https://apps.apple.com/app/id1532999659)
