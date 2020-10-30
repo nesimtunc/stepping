@@ -13,10 +13,11 @@ import CoreData
 class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 	
 	private let locationManager = CLLocationManager()
+
+    private (set) var exists = PassthroughSubject<BeaconItem, Never>()
+    private (set) var enters = PassthroughSubject<BeaconItem, Never>()
 	
 	@Published private (set) var permissionGranted = false
-	private (set) var exists = PassthroughSubject<BeaconItem, Never>()
-	private (set) var enters = PassthroughSubject<BeaconItem, Never>()
 	
 	@Published var beaconItems: [UUID: BeaconItem] = [:]
 	@Published var foundBeacons: [UUID: CLBeacon] = [:]
@@ -51,7 +52,6 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
 	}
 	
 	func startMonitoring() {
-		stopScanningAll()
 		for item in PersistenceController.shared.getBeacons() {
 			guard let beaconID = item.uuid, beaconItems[beaconID] == nil else { return }
 			
