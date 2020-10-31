@@ -11,9 +11,7 @@ import CoreData
 
 class NotificationService: NSObject, ObservableObject {
 	
-	@Published private (set) var permissionGranted = false
-	
-	override init() {
+    override init() {
 		super.init()
 		self.requestPermission()
 	}
@@ -21,21 +19,7 @@ class NotificationService: NSObject, ObservableObject {
 	func requestPermission() {
 		let notification = UNUserNotificationCenter.current()
 		let options: UNAuthorizationOptions = [.alert, .sound]
-		
-		notification.requestAuthorization(options: options) { didAllow, _ in
-			DispatchQueue.main.async {
-				self.permissionGranted = didAllow
-			}
-		}
-		checkAuthorization()
-	}
-	
-	func checkAuthorization() {
-		UNUserNotificationCenter.current().getNotificationSettings { settings in
-			DispatchQueue.main.async {
-				self.permissionGranted = settings.authorizationStatus == .authorized
-			}
-		}
+		notification.requestAuthorization(options: options) { _, _ in }
 	}
 	
 	func show(pushNotificationId: String, title: String, message: String) {
@@ -47,5 +31,4 @@ class NotificationService: NSObject, ObservableObject {
 		let request = UNNotificationRequest(identifier: "Stepping_\(pushNotificationId)", content: push, trigger: nil)
 		UNUserNotificationCenter.current().add(request)
 	}
-	
 }

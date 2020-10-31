@@ -10,7 +10,9 @@ import SwiftUI
 struct Home: View {
 
 	@EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject var permissionService: PermissionService
 	@Environment(\.managedObjectContext) private var viewContext
+    
 
 	@State var showSplash = true
 
@@ -25,6 +27,7 @@ struct Home: View {
 			} else {
 				ContentView()
 					.environment(\.managedObjectContext, viewContext)
+                    .environmentObject(permissionService)
 			}
 		}
 		}.onAppear {

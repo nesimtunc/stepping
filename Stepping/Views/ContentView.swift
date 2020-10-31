@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
 	@Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var permissionService: PermissionService
 
 	@State private var showingAddScreen = false
 	
@@ -34,7 +35,7 @@ struct ContentView: View {
 					RemaingBeaconCount(count: items.count, maxBeaconCount: maxBeaconCount)
 					List {
 						ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-							BeaconItemCell(index:index, item:item, session: session).accessibility(identifier: "\(String(describing: item.name))")
+                            BeaconItemCell(index:index, item:item, session: self.session).accessibility(identifier: "\(String(describing: item.name))")
 						}
 						.onDelete(perform: deleteItems)
 					}.accessibility(identifier: "list")
@@ -51,14 +52,19 @@ struct ContentView: View {
 			}
 			.font(.title2))
 			.sheet(isPresented: $showingAddScreen, content: {
-				AddNewBeacon(sessionController: session).environment(\.managedObjectContext, self.viewContext)
+                AddNewBeacon(sessionController: self.session).environment(\.managedObjectContext, self.viewContext)
 			})
-			.alert(isPresented: $showingAlert) {
-				Alert(title: Text("Warning"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-			}
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Warning"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+            }
+            .alert(isPresented: $permissionService.notificationPermissionDenied) {
+                Alert(title: Text("Push notification is disabled"), message: Text("In order to get notification you need to enable notification for the app. Pressing OK will open the settings screen."), dismissButton: .default(Text("OK")) {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                })
+            }
 		}
 	}
-	
+    
 	private func deleteItems(offsets: IndexSet) {
 		errorMessage = ""
 		showingAlert = false
