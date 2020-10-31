@@ -62,6 +62,11 @@ struct ContentView: View {
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                 })
             }
+            .alert(isPresented: $permissionService.locationPermissionDenied) {
+                Alert(title: Text("Location usage is disabled"), message: Text("In order to monitoring the iBeacons in background you need to allow the app using the location \"Always\" and precise on. Pressing OK will open the settings screen."), dismissButton: .default(Text("OK")) {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                })
+            }
 		}
 	}
     

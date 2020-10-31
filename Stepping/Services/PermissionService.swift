@@ -8,13 +8,20 @@
 import Foundation
 import Combine
 import UserNotifications
+import CoreLocation
 
-class PermissionService: ObservableObject {
+class PermissionService: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var notificationPermissionDenied = false
+    @Published var locationPermissionDenied = false
     
-    init() {
+    private let locationManager = CLLocationManager()
+
+    override init() {
+        super.init()
+        locationManager.delegate = self
         checkAuthorization()
+        locationManager.requestAlwaysAuthorization()
     }
     
     func checkAuthorization() {
@@ -22,6 +29,12 @@ class PermissionService: ObservableObject {
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                 self.notificationPermissionDenied = settings.authorizationStatus != .authorized
             }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.locationPermissionDenied = status != .authorizedAlways
         }
     }
 }
