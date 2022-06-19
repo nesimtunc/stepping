@@ -7,4 +7,4 @@ You can see app's preview on YouTube: https://youtu.be/ZmLFVXJ5dVA
 
 Available on App Store
 
-[![](https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred_2x.png)](https://apps.apple.com/app/id1532999659)
+[![](https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred_2x.png)](https://apps.apple.com/app/stepping-in-out/id1532999659)
