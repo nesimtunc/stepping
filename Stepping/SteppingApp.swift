@@ -9,16 +9,16 @@ import SwiftUI
 
 @main
 struct SteppingApp: App {
-	let persistenceController = PersistenceController.shared
-
-	let userSettings = UserSettings()
+    let persistenceController = PersistenceController.shared
+    
+    let userSettings = UserSettings()
     let permissionService = PermissionService()
-
-	var body: some Scene {
-		WindowGroup {
-			Home().environment(\.managedObjectContext, persistenceController.container.viewContext)
-				.environmentObject(userSettings)
+    
+    var body: some Scene {
+        WindowGroup {
+            Home().environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(userSettings)
                 .environmentObject(permissionService)
-		}
-	}
+        }
+    }
 }

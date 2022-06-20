@@ -16,7 +16,7 @@ class PermissionService: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var locationPermissionDenied = false
     
     private let locationManager = CLLocationManager()
-
+    
     override init() {
         super.init()
         locationManager.delegate = self

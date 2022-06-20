@@ -8,9 +8,9 @@
 import Foundation
 
 class UserSettings: ObservableObject {
-	@Published var firstLaunch: Bool
-
-	init() {
-		self.firstLaunch = UserDefaults.standard.string(forKey: "firstLaunch") == nil
-	}
+    @Published var firstLaunch: Bool
+    
+    init() {
+        self.firstLaunch = UserDefaults.standard.string(forKey: "firstLaunch") == nil
+    }
 }
