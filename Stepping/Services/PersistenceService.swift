@@ -1,5 +1,5 @@
 //
-//  Persistence.swift
+//  PersistenceService.swift
 //  Stepping
 //
 //  Created by Neso on 2020/09/23.
@@ -7,8 +7,8 @@
 
 import CoreData
 
-fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
-    let result = PersistenceController(inMemory: true)
+fileprivate func createSomeDummyData(count:Int) -> PersistenceService {
+    let result = PersistenceService(inMemory: true)
     if count == 0 {
         return result
     }
@@ -39,18 +39,18 @@ fileprivate func createSomeDummyData(count:Int) -> PersistenceController {
     return result
 }
 
-struct PersistenceController {
-    static let shared = PersistenceController()
+struct PersistenceService {
+    static let shared = PersistenceService()
     
     let container: NSPersistentCloudKitContainer
     let containerName = "Stepping"
     let entityName =  "BeaconItem"
     
-    static var preview: PersistenceController = {
+    static var preview: PersistenceService = {
         createSomeDummyData(count: 3)
     }()
     
-    static var fullOfDataPreview: PersistenceController = {
+    static var fullOfDataPreview: PersistenceService = {
         createSomeDummyData(count: 11)
     }()
     

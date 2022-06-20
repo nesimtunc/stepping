@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct SteppingApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = PersistenceService.shared
     
     let userSettings = UserSettings()
     let permissionService = PermissionService()

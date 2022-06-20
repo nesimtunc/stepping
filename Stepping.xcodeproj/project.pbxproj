@@ -14,7 +14,7 @@
 		48461F1B251AD1140053F4D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F1A251AD1140053F4D7 /* ContentView.swift */; };
 		48461F1D251AD1180053F4D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48461F1C251AD1180053F4D7 /* Assets.xcassets */; };
 		48461F20251AD1180053F4D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48461F1F251AD1180053F4D7 /* Preview Assets.xcassets */; };
-		48461F22251AD1180053F4D7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F21251AD1180053F4D7 /* Persistence.swift */; };
+		48461F22251AD1180053F4D7 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48461F21251AD1180053F4D7 /* PersistenceService.swift */; };
 		48461F25251AD1180053F4D7 /* Stepping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48461F23251AD1180053F4D7 /* Stepping.xcdatamodeld */; };
 		4889C9092526A28D00346A22 /* BeaconItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889C9082526A28D00346A22 /* BeaconItemDetail.swift */; };
 		48ADE052252C94A300D957FD /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ADE051252C94A300D957FD /* Launch.swift */; };
@@ -55,7 +55,7 @@
 		48461F1A251AD1140053F4D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		48461F1C251AD1180053F4D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48461F1F251AD1180053F4D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		48461F21251AD1180053F4D7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		48461F21251AD1180053F4D7 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		48461F24251AD1180053F4D7 /* Stepping.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stepping.xcdatamodel; sourceTree = "<group>"; };
 		48461F26251AD1180053F4D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48461F2B251AD1190053F4D7 /* SteppingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteppingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,12 +102,12 @@
 		4840E9D525269DD600B7ECB3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				48461F1A251AD1140053F4D7 /* ContentView.swift */,
 				48B27CEA251C43E400ABC77D /* AddNewBeacon.swift */,
 				4889C9082526A28D00346A22 /* BeaconItemDetail.swift */,
+				48461F1A251AD1140053F4D7 /* ContentView.swift */,
+				48DC42EA252C9D6400DFDBF7 /* Home.swift */,
 				48ADE051252C94A300D957FD /* Launch.swift */,
 				48DC42E0252C99A900DFDBF7 /* Modifiers.swift */,
-				48DC42EA252C9D6400DFDBF7 /* Home.swift */,
 				48DC42FD252D4D0400DFDBF7 /* SplashView.swift */,
 			);
 			path = Views;
@@ -186,10 +186,10 @@
 		48C63D332522E1AD00912426 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				48461F21251AD1180053F4D7 /* Persistence.swift */,
 				483BAEB92525756700F3B734 /* BeaconDetector.swift */,
 				48DFA2622525804C00A42639 /* NotificationService.swift */,
 				48006DA1254D328300ED8257 /* PermissionService.swift */,
+				48461F21251AD1180053F4D7 /* PersistenceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48006DA2254D328300ED8257 /* PermissionService.swift in Sources */,
-				48461F22251AD1180053F4D7 /* Persistence.swift in Sources */,
+				48461F22251AD1180053F4D7 /* PersistenceService.swift in Sources */,
 				483BAEBA2525756700F3B734 /* BeaconDetector.swift in Sources */,
 				48DC42FE252D4D0400DFDBF7 /* SplashView.swift in Sources */,
 				48461F1B251AD1140053F4D7 /* ContentView.swift in Sources */,

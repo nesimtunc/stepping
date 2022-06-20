@@ -162,8 +162,8 @@ struct RemaingBeaconCount: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView().previewDevice("iPhone 11 Pro Max").preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            ContentView().previewDevice("iPhone 11 Pro Max").preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceController.fullOfDataPreview.container.viewContext)
+            ContentView().previewDevice("iPhone 11 Pro Max").preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceService.preview.container.viewContext)
+            ContentView().previewDevice("iPhone 11 Pro Max").preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceService.fullOfDataPreview.container.viewContext)
         }
     }
 }

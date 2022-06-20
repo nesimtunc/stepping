@@ -17,7 +17,7 @@ class PersistenceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.context = PersistenceController.shared.container.viewContext;
+        self.context = PersistenceService.shared.container.viewContext;
     }
     
     override func tearDown() {

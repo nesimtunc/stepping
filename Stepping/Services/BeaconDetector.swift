@@ -52,7 +52,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func startMonitoring() {
-        for item in PersistenceController.shared.getBeacons() {
+        for item in PersistenceService.shared.getBeacons() {
             guard let beaconID = item.uuid, beaconItems[beaconID] == nil else { return }
             
             let constraint = CLBeaconIdentityConstraint(uuid: item.uuid!,
